@@ -1,0 +1,10 @@
+plugins {
+    id 'java'
+}
+
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.2'
+}
+
+tasks.register("prepareKotlinBuildScriptModel"){}

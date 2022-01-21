@@ -1,35 +1,50 @@
-plugins {
-    id 'org.springframework.boot' version '2.6.2'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'java'
-}
+buildscript {
 
-group = 'ro.iopo'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+    ext {
+        lombokVersion = "1.18.22"
+        springBootVersion = "2.6.2"
+    }
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE"
     }
 }
 
-repositories {
-    mavenCentral()
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+    apply plugin: 'io.spring.dependency-management'
 }
 
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.security:spring-security-test'
-}
+subprojects {
 
-test {
-    useJUnitPlatform()
+    repositories {
+        mavenCentral()
+    }
+
+    group = 'ro.iopo'
+    version = '1.0.0'
+
+
+    sourceCompatibility = '11'
+
+    dependencies {
+
+        compileOnly "org.projectlombok:lombok:${lombokVersion}"
+        annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+        implementation "org.springframework.boot:spring-boot-starter-security:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-starter-validation:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
+        testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+    }
+
+    test {
+        useJUnitPlatform()
+    }
 }
