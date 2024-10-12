@@ -1,4 +1,4 @@
-rootProject.name = 'gnir'
+rootProject.name = 'GNIR'
 
-include 'api'
-include 'app'
+include ':api'
+include ':app'

@@ -5,8 +5,17 @@ plugins {
 
 dependencies {
     implementation project(':api')
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.2'
+    // https://mvnrepository.com/artifact/org.springframework.data/spring-data-redis
+    implementation 'org.springframework.data:spring-data-redis:3.3.4'
+
+    implementation 'io.lettuce:lettuce-core:6.4.0.RELEASE'
+    // https://mvnrepository.com/artifact/com.asprise.ocr/java-ocr-api
+    implementation 'com.asprise.ocr:java-ocr-api:15.3.0.3'
+    // https://mvnrepository.com/artifact/net.sourceforge.tess4j/tess4j
+    implementation 'net.sourceforge.tess4j:tess4j:5.2.0'
+    // https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox
+    implementation 'org.apache.pdfbox:pdfbox:2.0.27'
 }
 
 
-tasks.register("prepareKotlinBuildScriptModel"){}
+tasks.register("prepareKotlinBuildScriptModel") {}
